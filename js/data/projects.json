@@ -1,0 +1,70 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Automated Species Identification using Acoustic Monitoring",
+      "description": "Developed a machine learning model to identify bird species from audio recordings with 92% accuracy. The system helps in biodiversity monitoring and conservation efforts.",
+      "category": "acoustics",
+      "year": "2023",
+      "technologies": ["Python", "TensorFlow", "Librosa", "SciPy"],
+      "image": "project1.jpg",
+      "link": "#",
+      "tags": ["machine learning", "bioacoustics", "conservation"]
+    },
+    {
+      "id": 2,
+      "title": "Spatial Analysis of Deforestation Patterns",
+      "description": "Conducted GIS-based analysis of deforestation patterns in Western Ghats using satellite imagery and remote sensing data to identify critical areas for conservation.",
+      "category": "gis",
+      "year": "2023",
+      "technologies": ["QGIS", "Google Earth Engine", "Python", "R"],
+      "image": "project2.jpg",
+      "link": "#",
+      "tags": ["geospatial analysis", "conservation", "remote sensing"]
+    },
+    {
+      "id": 3,
+      "title": "EcoHack 2023: Sustainable Agriculture Solution",
+      "description": "Won 1st place in EcoHack 2023 for developing an AI-powered platform that helps farmers optimize water usage and reduce pesticide application through IoT sensors and ML predictions.",
+      "category": "hackathon",
+      "year": "2023",
+      "technologies": ["Python", "TensorFlow Lite", "Arduino", "React"],
+      "image": "project3.jpg",
+      "link": "#",
+      "tags": ["iot", "sustainability", "precision agriculture"]
+    },
+    {
+      "id": 4,
+      "title": "Urban Soundscape Analysis",
+      "description": "Research project analyzing the impact of urban noise pollution on local bird populations using acoustic monitoring and machine learning classification.",
+      "category": "acoustics",
+      "year": "2022",
+      "technologies": ["Python", "Librosa", "Scikit-learn", "Pandas"],
+      "image": "project4.jpg",
+      "link": "#",
+      "tags": ["soundscape ecology", "urban ecology", "data analysis"]
+    },
+    {
+      "id": 5,
+      "title": "Biodiversity Hotspot Mapping",
+      "description": "Created high-resolution biodiversity maps of Kerala using GIS and remote sensing data to identify and prioritize conservation areas.",
+      "category": "gis",
+      "year": "2022",
+      "technologies": ["QGIS", "R", "Python", "Google Earth Engine"],
+      "image": "project5.jpg",
+      "link": "#",
+      "tags": ["biodiversity", "conservation", "spatial analysis"]
+    },
+    {
+      "id": 6,
+      "title": "Climate Change Impact on Bird Migration",
+      "description": "Analyzed long-term bird migration data to study the impact of climate change on migration patterns and timing of various bird species.",
+      "category": "research",
+      "year": "2021",
+      "technologies": ["R", "Python", "GIS", "Statistical Analysis"],
+      "image": "project6.jpg",
+      "link": "#",
+      "tags": ["climate change", "ornithology", "data analysis"]
+    }
+  ]
+}

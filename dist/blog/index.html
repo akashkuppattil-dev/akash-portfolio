@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#2E8B57">
+    <title>Blog | Adhith M K</title>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="../css/styles.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"></noscript>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .blog-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .blog-header p {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .blog-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+        .blog-card h2 {
+            color: var(--heading-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .blog-meta i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+        .blog-excerpt {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .read-more {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .read-more:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .blog-posts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">Adhith M K</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header section">
+        <div class="container">
+            <h1>My Blog</h1>
+            <p>Thoughts, research, and experiences in ecological informatics, wildlife conservation, and data science.</p>
+        </div>
+    </header>
+
+    <!-- Blog Posts -->
+    <main class="blog-container">
+        <div class="container">
+            <div class="blog-posts">
+                <!-- Blog Post 1 -->
+                <article class="blog-card">
+                    <img src="https://source.unsplash.com/1600x900/?sound,ecology,recording" alt="Soundscape Ecology - Professional audio recording in nature" loading="lazy" onerror="this.src='https://via.placeholder.com/800x450/2E8B57/FFFFFF?text=Soundscape+Ecology'">
+                    <div class="blog-card-content">
+                        <h2>Introduction to Soundscape Ecology</h2>
+                        <div class="blog-meta">
+                            <i class="far fa-calendar"></i>
+                            <span>June 18, 2025</span>
+                        </div>
+                        <p class="blog-excerpt">Exploring the fascinating world of soundscape ecology and its applications in biodiversity monitoring and conservation efforts.</p>
+                        <a href="posts/introduction-soundscape-ecology.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card">
+                    <img src="https://source.unsplash.com/1600x900/?bioacoustics,sound,analysis" alt="Bioacoustics - Professional sound analysis in lab" loading="lazy" onerror="this.src='https://via.placeholder.com/800x450/2E8B57/FFFFFF?text=Bioacoustics'">
+                    <div class="blog-card-content">
+                        <h2>The Future of Bioacoustics in Conservation</h2>
+                        <div class="blog-meta">
+                            <i class="far fa-calendar"></i>
+                            <span>June 18, 2025</span>
+                        </div>
+                        <p class="blog-excerpt">How bioacoustic monitoring is revolutionizing wildlife conservation and ecological research.</p>
+                        <a href="posts/future-of-bioacoustics-conservation.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-card">
+                    <img src="https://source.unsplash.com/1600x900/?r,programming,data,visualization" alt="R Programming - Data visualization on screen" loading="lazy" onerror="this.src='https://via.placeholder.com/800x450/008080/FFFFFF?text=R+Programming'">
+                    <div class="blog-card-content">
+                        <h2>Ecological Data Analysis with R</h2>
+                        <div class="blog-meta">
+                            <i class="far fa-calendar"></i>
+                            <span>June 18, 2025</span>
+                        </div>
+                        <p class="blog-excerpt">A practical guide to using R for ecological data analysis and visualization.</p>
+                        <a href="posts/r-ecological-data-analysis.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Adhith M K</h3>
+                    <p>Ecological Informatics & Wildlife Conservation</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#home">Home</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#research">Research</a></li>
+                        <li><a href="../index.html#publications">Publications</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get In Touch</h4>
+                    
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> Adhith M K. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                    <a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script>
+        // Update current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
