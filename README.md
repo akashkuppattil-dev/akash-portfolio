@@ -1,14 +1,14 @@
-# Adhith M K - Academic Portfolio
+# Akash K - Personal Portfolio
 
-Welcome to my academic portfolio website showcasing my work in Ecological Informatics & Acoustic Ecology.
+Welcome to my personal portfolio website showcasing my work in Web Development and Software Projects.
 
 ## Features
 
 - Responsive design for all devices
-- Interactive map visualization
 - Project showcase with filtering
-- Blog section
-- Contact form
+- Interactive elements using HTML, CSS, and JavaScript
+- Contact form for inquiries
+- Modern and professional layout
 
 ## Setup
 
@@ -19,14 +19,16 @@ Welcome to my academic portfolio website showcasing my work in Ecological Inform
 
 This website is designed to be hosted on GitHub Pages. To deploy:
 
-1. Create a new GitHub repository named `username.github.io` (replace username with your GitHub username)
+1. Create a new GitHub repository named `akash-portfolio`
 2. Push the contents of this folder to the `main` branch
-3. Your site will be live at `https://username.github.io`
+3. Your site will be live at:  
+
+
 
 ## Technologies Used
 
 - HTML5
-- CSS3 (with Flexbox and Grid)
+- CSS3 (Flexbox & Grid)
 - JavaScript (ES6+)
 - Font Awesome Icons
 - Google Fonts (Montserrat and Open Sans)
