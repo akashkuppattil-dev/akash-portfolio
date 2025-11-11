@@ -19,64 +19,67 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tX/miZyoHS5obTRR9BMY=" crossorigin=""/>
   
-  <!-- === TIMELINE STYLES (NEW) === -->
+  <!-- === INTERNAL TIMELINE STYLES (Inside Each Card) === -->
   <style>
-    /* Reusable Timeline */
-    .timeline-container {
+    /* Base card with internal timeline */
+    .timeline-card {
       position: relative;
-      padding-left: 40px;
-      margin-left: 20px;
+      padding-left: 50px;
+      margin-bottom: 30px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
-    .timeline-container::before {
+    .timeline-card:hover {
+      transform: translateY(-5px);
+    }
+    .timeline-card::before {
       content: '';
       position: absolute;
-      left: 15px;
+      left: 20px;
       top: 0;
       bottom: 0;
       width: 4px;
       background: #2E8B57;
       border-radius: 2px;
     }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 40px;
-      padding-left: 30px;
-    }
-    .timeline-item::before {
+    .timeline-card::after {
       content: '';
       position: absolute;
-      left: -9px;
-      top: 8px;
+      left: 12px;
+      top: 20px;
       width: 16px;
       height: 16px;
-      background: #2E8B57;
-      border: 4px solid #fff;
+      background: #fff;
+      border: 4px solid #2E8B57;
       border-radius: 50%;
-      box-shadow: 0 0 0 4px #2E8B57;
       z-index: 1;
     }
-    .timeline-item:last-child {
+
+    /* Remove bottom margin from last item in section */
+    .timeline-card:last-child {
       margin-bottom: 0;
     }
 
-    /* Section-specific tweaks */
-    #about .about-grid { display: grid; grid-template-columns: 40% 60%; gap: 20px; }
-    .skills-container { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-    .certifications-container { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); padding: 20px 0; }
+    /* Grid containers */
+    .skills-container,
+    .certifications-container {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      padding: 10px 0;
+    }
 
-    /* Existing styles you had */
-    .certifications-container .skills-category,
-    .skills-container .skills-category {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      transition: transform 0.3s ease;
+    /* About Grid */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      gap: 20px;
+      align-items: start;
     }
-    .certifications-container .skills-category:hover,
-    .skills-container .skills-category:hover {
-      transform: translateY(-5px);
-    }
+
+    /* Existing styles */
     .experience-header h3 { margin: 0; font-size: 1.5rem; color: #2E8B57; }
     .experience-role, .experience-date { margin: 5px 0; color: #555; }
     .experience-body p { margin: 10px 0; color: #333; }
@@ -84,8 +87,8 @@
     .footer-contact .contact-link { color: #2E8B57; text-decoration: none; font-size: 1rem; display: block; margin: 5px 0; }
     .footer-contact .contact-link i { margin-right: 8px; font-size: 1.2rem; }
     .footer-contact .contact-link:hover { text-decoration: underline; }
-    .social-links .contact-link { color: #2E8B57; text-decoration: none; font-size: 1rem; display: block; margin: 8px 0; visibility: visible !important; }
-    .social-links .contact-link i { margin-right: 8px; font-size: 1.2rem; visibility: visible !important; }
+    .social-links .contact-link { color: #2E8B57; text-decoration: none; font-size: 1rem; display: block; margin: 8px 0; }
+    .social-links .contact-link i { margin-right: 8px; font-size: 1.2rem; }
     .social-links .contact-link:hover { text-decoration: underline; }
   </style>
 </head>
@@ -98,15 +101,15 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> About</a></li>
-        <li><a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> Experience</a></li>
-        <li><a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
-        <li><a href="#education" class="nav-link"><i class="fas fa-graduation-cap"></i> Education</a></li>
-        <li><a href="#skills" class="nav-link"><i class="fas fa-tools"></i> Skills</a></li>
-        <li><a href="#certifications" class="nav-link"><i class="fas fa-certificate"></i> Certifications</a></li>
-        <li><a href="#languages" class="nav-link"><i class="fas fa-language"></i> Languages</a></li>
-        <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="#languages" class="nav-link">Languages</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -125,27 +128,25 @@
     </div>
   </section>
 
-  <!-- About (with timeline) -->
+  <!-- About -->
   <section id="about" class="section">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
-      <div class="timeline-container">
-        <div class="timeline-item">
-          <div class="about-grid">
-            <div class="about-image">
-              <div class="image-container">
-                <img src="./images/5.jpg" alt="AKASH K" style="width:90%; height:auto;">
-              </div>
+      <h2 class="section-title">About Me</h2>
+      <div class="timeline-card">
+        <div class="about-grid">
+          <div class="about-image">
+            <div class="image-container">
+              <img src="./images/5.jpg" alt="AKASH K" style="width:90%; height:auto;">
             </div>
-            <div class="about-text">
-              <p>
-                Hello! I’m Akash K, a passionate Software Developer and MCA graduate who loves bringing ideas to life through meaningful digital experiences. Driven by creativity and curiosity, I focus on building software that solves real-world problems and makes a lasting impact.
-              </p>
-              <p><i class="fas fa-graduation-cap"></i> <strong>Master of Computer Applications (MCA)</strong></p>
-              <p>APJ Abdul Kalam Technological University – AWH Engineering College</p>
-              <div class="about-cta">
-                <a href="pdf/Akash_K_FullStackDeveloper_Resume.pdf" class="btn btn-primary" download><i class="fas fa-download"></i> Download CV</a>
-              </div>
+          </div>
+          <div class="about-text">
+            <p>
+              Hello! I’m Akash K, a passionate Software Developer and MCA graduate who loves bringing ideas to life through meaningful digital experiences. Driven by creativity and curiosity, I focus on building software that solves real-world problems and makes a lasting impact.
+            </p>
+            <p><strong>Master of Computer Applications (MCA)</strong></p>
+            <p>APJ Abdul Kalam Technological University – AWH Engineering College</p>
+            <div class="about-cta">
+              <a href="pdf/Akash_K_FullStackDeveloper_Resume.pdf" class="btn btn-primary" download>Download CV</a>
             </div>
           </div>
         </div>
@@ -153,52 +154,46 @@
     </div>
   </section>
 
-  <!-- Experience (with timeline) -->
+  <!-- Experience -->
   <section id="experience" class="section bg-light">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
-      <div class="timeline-container">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="skills-container">
         <!-- Trogon Media -->
-        <div class="timeline-item">
-          <div class="skills-category">
-            <div class="experience-header">
-              <h3>PHP Developer Intern</h3>
-              <p class="experience-date">Jul 2025 – Oct 2025</p>
-              <p class="experience-role">Trogon Media Pvt Ltd | Calicut, India</p>
-            </div>
-            <div class="experience-body">
-              <ul class="experience-details">
-                <li>Developed and maintained web applications using <strong>CodeIgniter</strong> & <strong>Laravel</strong> frameworks.</li>
-                <li>Contributed to <strong>multiple live client projects</strong>, including web and mobile applications, ensuring high performance and scalability.</li>
-                <li>Designed and implemented <strong>responsive front-end interfaces</strong> using HTML, CSS, JavaScript, and Bootstrap, improving user engagement.</li>
-                <li>Managed <strong>project deployments and maintenance</strong> via cPanel, handling hosting setup, version updates, and database configuration.</li>
-                <li>Collaborated closely with designers, backend developers, and QA teams in an <strong>Agile development environment</strong>, gaining full-stack experience from design to deployment.</li>
-              </ul>
-              <div class="experience-skills">
-                <span>PHP</span> <span>CodeIgniter</span> <span>Laravel</span> <span>Git</span> <span>cPanel</span>
-              </div>
+        <div class="timeline-card">
+          <div class="experience-header">
+            <h3>PHP Developer Intern</h3>
+            <p class="experience-date">Jul 2025 – Oct 2025</p>
+            <p class="experience-role">Trogon Media Pvt Ltd | Calicut, India</p>
+          </div>
+          <div class="experience-body">
+            <ul class="experience-details">
+              <li>Developed and maintained web applications using <strong>CodeIgniter</strong> & <strong>Laravel</strong> frameworks.</li>
+              <li>Contributed to <strong>multiple live client projects</strong>, ensuring high performance and scalability.</li>
+              <li>Designed <strong>responsive front-end interfaces</strong> using HTML, CSS, JavaScript, and Bootstrap.</li>
+              <li>Managed <strong>project deployments</strong> via cPanel.</li>
+              <li>Collaborated in an <strong>Agile environment</strong>.</li>
+            </ul>
+            <div class="experience-skills">
+              <span>PHP</span> <span>CodeIgniter</span> <span>Laravel</span> <span>Git</span> <span>cPanel</span>
             </div>
           </div>
         </div>
         <!-- Bairuha-Tech -->
-        <div class="timeline-item">
-          <div class="skills-category">
-            <div class="experience-header">
-              <h3>Software Developer Intern</h3>
-              <p class="experience-date">Jan 2025 – May 2025</p>
-              <p class="experience-role">Bairuha-Tech | Kozhikode, India</p>
-            </div>
-            <div class="experience-body">
-              <ul class="experience-details">
-                <li>Collaborated in the development of a <strong>Hospital Management System</strong> using <strong>React.js</strong>, <strong>NestJS</strong>, and <strong>PostgreSQL</strong>.</li>
-                <li>Designed and implemented <strong>RESTful APIs</strong> for appointment scheduling, patient registration, and data management.</li>
-                <li>Integrated <strong>role-based access control</strong>, enhancing data security and improving system usability.</li>
-                <li>Worked within an <strong>Agile/Scrum team environment</strong>, participating in sprint reviews and collaborative code development.</li>
-                <li>Enhanced system reliability by performing <strong>API optimization</strong>, <strong>data validation</strong>, and <strong>performance testing</strong>.</li>
-              </ul>
-              <div class="experience-skills">
-                <span>React.js</span> <span>NestJS</span> <span>PostgreSQL</span> <span>REST APIs</span> <span>AWS</span> <span>Firebase</span>
-              </div>
+        <div class="timeline-card">
+          <div class="experience-header">
+            <h3>Software Developer Intern</h3>
+            <p class="experience-date">Jan 2025 – May 2025</p>
+            <p class="experience-role">Bairuha-Tech | Kozhikode, India</p>
+          </div>
+          <div class="experience-body">
+            <ul class="experience-details">
+              <li>Developed <strong>Hospital Management System</strong> using <strong>React.js</strong>, <strong>NestJS</strong>, and <strong>PostgreSQL</strong>.</li>
+              <li>Implemented <strong>RESTful APIs</strong> and <strong>RBAC</strong>.</li>
+              <li>Performed <strong>API optimization</strong> and testing.</li>
+            </ul>
+            <div class="experience-skills">
+              <span>React.js</span> <span>NestJS</span> <span>PostgreSQL</span> <span>AWS</span> <span>Firebase</span>
             </div>
           </div>
         </div>
@@ -206,66 +201,53 @@
     </div>
   </section>
 
-  <!-- Projects (with timeline) -->
+  <!-- Projects -->
   <section id="projects" class="section">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-project-diagram"></i> Key Projects</h2>
-      <div class="timeline-container">
-        <!-- Hospital Management -->
-        <div class="timeline-item">
-          <div class="skills-category">
-            <div class="experience-header">
-              <h3>Hospital Management System (Live Project – Bairuha Tech)</h3>
-              <p class="experience-date">Jan 2025 – May 2025</p>
-            </div>
-            <div class="experience-body">
-              <ul class="experience-details">
-                <li>Developed the <strong>Front Office Management Module</strong> using <strong>React.js</strong> and <strong>NestJS</strong>, integrating appointment scheduling and patient data workflows.</li>
-                <li>Implemented <strong>role-based authentication (RBAC)</strong> for secure access control and data protection.</li>
-                <li>Contributed to <strong>API optimization</strong> and <strong>UI enhancements</strong> for smoother user experience and faster response times.</li>
-              </ul>
-              <div class="experience-skills">
-                <span>React.js</span> <span>NestJS</span> <span>PostgreSQL</span> <span>AWS</span> <span>Firebase</span>
-              </div>
+      <h2 class="section-title">Key Projects</h2>
+      <div class="skills-container">
+        <div class="timeline-card">
+          <div class="experience-header">
+            <h3>Hospital Management System</h3>
+            <p class="experience-date">Jan 2025 – May 2025</p>
+          </div>
+          <div class="experience-body">
+            <ul class="experience-details">
+              <li>Built front office module with <strong>React.js</strong> & <strong>NestJS</strong>.</li>
+              <li>Integrated <strong>RBAC</strong> and optimized APIs.</li>
+            </ul>
+            <div class="experience-skills">
+              <span>React.js</span> <span>NestJS</span> <span>PostgreSQL</span>
             </div>
           </div>
         </div>
-        <!-- Warehouse -->
-        <div class="timeline-item">
-          <div class="skills-category">
-            <div class="experience-header">
-              <h3>Warehouse Management & Logistics Tracking</h3>
-              <p class="experience-date">Jul 2024 – Nov 2024</p>
-            </div>
-            <div class="experience-body">
-              <ul class="experience-details">
-                <li>Built a <strong>real-time logistics tracking platform</strong> using <strong>Python</strong>, <strong>Django</strong>, and <strong>MySQL</strong> to manage trips, drivers, and warehouse operations.</li>
-                <li>Enabled <strong>vehicle tracking</strong>, trip updates, and <strong>warehouse optimization</strong>, improving operational efficiency and transparency.</li>
-                <li>Integrated <strong>report generation and analytics features</strong> for data-driven decision-making.</li>
-                <li>Focused on <strong>scalability</strong>, <strong>efficient database management</strong>, and <strong>accurate data synchronization</strong>.</li>
-              </ul>
-              <div class="experience-skills">
-                <span>Python</span> <span>Django</span> <span>MySQL</span>
-              </div>
+        <div class="timeline-card">
+          <div class="experience-header">
+            <h3>Warehouse Management & Logistics</h3>
+            <p class="experience-date">Jul 2024 – Nov 2024</p>
+          </div>
+          <div class="experience-body">
+            <ul class="experience-details">
+              <li>Real-time tracking with <strong>Django</strong> & <strong>MySQL</strong>.</li>
+              <li>Analytics and reporting dashboard.</li>
+            </ul>
+            <div class="experience-skills">
+              <span>Python</span> <span>Django</span> <span>MySQL</span>
             </div>
           </div>
         </div>
-        <!-- Free Bird -->
-        <div class="timeline-item">
-          <div class="skills-category">
-            <div class="experience-header">
-              <h3>Free Bird (Web App for NGOs & Children)</h3>
-              <p class="experience-date">Dec 2021 – Mar 2022</p>
-            </div>
-            <div class="experience-body">
-              <ul class="experience-details">
-                <li>Designed and developed a <strong>social impact platform</strong> to connect street children with NGOs for education and healthcare support.</li>
-                <li>Built with <strong>Python</strong>, <strong>Django</strong>, and <strong>MySQL</strong>, ensuring secure data handling and efficient information sharing.</li>
-                <li>Implemented <strong>user-friendly interfaces</strong> for NGOs to manage cases and update progress.</li>
-              </ul>
-             >              <div class="experience-skills">
-                <span>Python</span> <span>Django</span> <span>MySQL</span>
-              </div>
+        <div class="timeline-card">
+          <div class="experience-header">
+            <h3>Free Bird (NGO Platform)</h3>
+            <p class="experience-date">Dec 2021 – Mar 2022</p>
+          </div>
+          <div class="experience-body">
+            <ul class="experience-details">
+              <li>Connected children with NGOs using <strong>Django</strong>.</li>
+              <li>Secure case management system.</li>
+            </ul>
+            <div class="experience-skills">
+              <span>Python</span> <span>Django</span> <span>MySQL</span>
             </div>
           </div>
         </div>
@@ -273,169 +255,131 @@
     </div>
   </section>
 
-  <!-- Education (already had timeline – updated class names) -->
+  <!-- Education -->
   <section id="education" class="section bg-light">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
-      <div class="timeline-container">
-        <div class="timeline-item">
-          <div class="education-card">
-            <div class="education-header">
-              <p class="degree"><i class="fas fa-graduation-cap"></i> Master of Computer Applications (MCA) – CGPA: 7.64</p>
-              <h3>APJ Abdul Kalam Technological University – AWH Engineering College</h3>
-              <p class="date-location"><i class="far fa-calendar-alt"></i> Jul 2023 – Jul 2025</p>
-              <p class="date-location"><i class="fas fa-map-marker-alt"></i> Calicut, India</p>
-            </div>
-          </div>
+      <h2 class="section-title">Education</h2>
+      <div class="timeline-card">
+        <div class="education-header">
+          <p class="degree">Master of Computer Applications (MCA) – CGPA: 7.64</p>
+          <h3>APJ Abdul Kalam Technological University – AWH Engineering College</h3>
+          <p class="date-location">Jul 2023 – Jul 2025</p>
+          <p class="date-location">Calicut, India</p>
         </div>
-        <div class="timeline-item">
-          <div class="education-card">
-            <div class="education-header">
-              <p class="degree"><i class="fas fa-graduation-cap"></i> Bachelor of Computer Science – CGPA: 6.4</p>
-              <h3>SAFI Institute of Advanced Study (Autonomous)</h3>
-              <p class="date-location"><i class="far fa-calendar-alt"></i> Jul 2019 – May 2022</p>
-              <p class="date-location"><i class="fas fa-map-marker-alt"></i> Malappuram, India</p>
-            </div>
-          </div>
+      </div>
+      <div class="timeline-card">
+        <div class="education-header">
+          <p class="degree">Bachelor of Computer Science – CGPA: 6.4</p>
+          <h3>SAFI Institute of Advanced Study</h3>
+          <p class="date-location">Jul 2019 – May 2022</p>
+          <p class="date-location">Malappuram, India</p>
         </div>
-        <div class="timeline-item">
-          <div class="education-card">
-            <div class="education-header">
-              <p class="degree"><i class="fas fa-graduation-cap"></i> Higher Secondary Education (Biology Science)</p>
-              <h3>Government Higher Secondary School, Calicut – Kerala State Board</h3>
-              <p class="date-location"><i class="far fa-calendar-alt"></i> Jul 2017 – May 2019</p>
-            </div>
-          </div>
+      </div>
+      <div class="timeline-card">
+        <div class="education-header">
+          <p class="degree">Higher Secondary Education (Biology Science)</p>
+          <h3>Government Higher Secondary School, Calicut</h3>
+          <p class="date-location">Jul 2017 – May 2019</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills (with timeline) -->
+  <!-- Skills -->
   <section id="skills" class="section">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-tools"></i> Technical Skills</h2>
-      <div class="timeline-container">
-        <div class="timeline-item">
-          <div class="skills-category">
-            <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
-            <div class="skills-tags">
-              <span class="skill-tag">HTML</span> <span class="skill-tag">CSS</span> <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">React.js</span> <span class="skill-tag">TypeScript</span> <span class="skill-tag">Bootstrap</span>
-            </div>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-container">
+        <div class="timeline-card">
+          <h3>Frontend</h3>
+          <div class="skills-tags">
+            <span class="skill-tag">HTML</span> <span class="skill-tag">CSS</span> <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">React.js</span> <span class="skill-tag">TypeScript</span> <span class="skill-tag">Bootstrap</span>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="skills-category">
-            <h3><i class="fas fa-server"></i> Backend</h3>
-            <div class="skills-tags">
-              <span class="skill-tag">Python</span> <span class="skill-tag">Django</span> <span class="skill-tag">NestJS</span>
-              <span class="skill-tag">Node.js</span> <span class="skill-tag">PHP (CodeIgniter & Laravel)</span>
-            </div>
+        <div class="timeline-card">
+          <h3>Backend</h3>
+          <div class="skills-tags">
+            <span class="skill-tag">Python</span> <span class="skill-tag">Django</span> <span class="skill-tag">NestJS</span>
+            <span class="skill-tag">Node.js</span> <span class="skill-tag">PHP</span>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="skills-category">
-            <h3><i class="fas fa-database"></i> Databases</h3>
-            <div class="skills-tags">
-              <span class="skill-tag">MySQL</span> <span class="skill-tag">PostgreSQL</span> <span class="skill-tag">MongoDB</span>
-              <span class="skill-tag">Database Design & Optimization</span>
-            </div>
+        <div class="timeline-card">
+          <h3>Databases</h3>
+          <div class="skills-tags">
+            <span class="skill-tag">MySQL</span> <span class="skill-tag">PostgreSQL</span> <span class="skill-tag">MongoDB</span>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="skills-category">
-            <h3><i class="fas fa-tools"></i> APIs & Tools</h3>
-            <div class="skills-tags">
-              <span class="skill-tag">REST APIs</span> <span class="skill-tag">API Integration</span> <span class="skill-tag">JSON</span>
-              <span class="skill-tag">Postman</span> <span class="skill-tag">Git</span> <span class="skill-tag">GitHub</span> <span class="skill-tag">Docker</span>
-            </div>
+        <div class="timeline-card">
+          <h3>Tools & APIs</h3>
+          <div class="skills-tags">
+            <span class="skill-tag">REST APIs</span> <span class="skill-tag">Git</span> <span class="skill-tag">Docker</span> <span class="skill-tag">Postman</span>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="skills-category">
-            <h3><i class="fas fa-users"></i> Soft Skills</h3>
-            <div class="skills-tags">
-              <span class="skill-tag">Power BI</span> <span class="skill-tag">Excel</span> <span class="skill-tag">Testing</span>
-              <span class="skill-tag">Agile/Scrum</span> <span class="skill-tag">Deployment & Testing</span> <span class="skill-tag">SDLC</span>
-              <span class="skill-tag">Problem Solving</span> <span class="skill-tag">Teamwork</span> <span class="skill-tag">Continuous Learning</span>
-            </div>
+        <div class="timeline-card">
+          <h3>Soft Skills</h3>
+          <div class="skills-tags">
+            <span class="skill-tag">Agile</span> <span class="skill-tag">Problem Solving</span> <span class="skill-tag">Teamwork</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Certifications (with timeline) -->
+  <!-- Certifications -->
   <section id="certifications" class="section bg-light">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
-      <div class="timeline-container">
-        <div class="timeline-item">
-          <div class="skills-category">
-            <div class="experience-header">
-              <h3>PHP Internship</h3>
-              <p class="experience-role">Trogon Media Pvt Ltd</p>
-              <p class="experience-date">2025</p>
-            </div>
-            <div class="experience-body">
-              <ul class="experience-details">
-                <li>Developed live client web apps using CodeIgniter & Laravel</li>
-                <li>Deployed projects via cPanel with database management</li>
-              </ul>
-            </div>
+      <h2 class="section-title">Certifications</h2>
+      <div class="certifications-container">
+        <div class="timeline-card">
+          <div class="experience-header">
+            <h3>PHP Internship</h3>
+            <p class="experience-role">Trogon Media Pvt Ltd</p>
+            <p class="experience-date">2025</p>
+          </div>
+          <div class="experience-body">
+            <ul class="experience-details">
+              <li>Live client projects with CodeIgniter & Laravel</li>
+            </ul>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="skills-category">
-            <div class="experience-header">
-              <h3>React and MERN Stack Internship</h3>
-              <p class="experience-role">Bairuha-Tech LLP</p>
-              <p class="experience-date">2025</p>
-            </div>
-            <div class="experience-body">
-              <ul class="experience-details">
-                <li>Built Hospital Management System with React & NestJS</li>
-                <li>Integrated REST APIs and role-based access control</li>
-              </ul>
-            </div>
+        <div class="timeline-card">
+          <div class="experience-header">
+            <h3>React & MERN Internship</h3>
+            <p class="experience-role">Bairuha-Tech</p>
+            <p class="experience-date">2025</p>
+          </div>
+          <div class="experience-body">
+            <ul class="experience-details">
+              <li>Hospital Management System</li>
+            </ul>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="skills-category">
-            <div class="experience-header">
-              <h3>Python & Django Full Stack Bootcamp</h3>
-              <p class="experience-role">Udemy</p>
-              <p class="experience-date">2024</p>
-            </div>
-            <div class="experience-body">
-              <ul class="experience-details">
-                <li>Mastered full-stack development with Django & MySQL</li>
-                <li>Built scalable web apps with user authentication</li>
-              </ul>
-            </div>
+        <div class="timeline-card">
+          <div class="experience-header">
+            <h3>Python & Django Bootcamp</h3>
+            <p class="experience-role">Udemy</p>
+            <p class="experience-date">2024</p>
           </div>
         </div>
-        <!-- Add more certifications as timeline-item -->
+        <!-- Add more as needed -->
       </div>
     </div>
   </section>
 
-  <!-- Languages (with timeline) -->
+  <!-- Languages -->
   <section id="languages" class="section">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-language"></i> Languages</h2>
-      <div class="timeline-container">
-        <div class="timeline-item">
-          <div class="skills-tags">
-            <span class="skill-tag">English</span>
-            <span class="skill-tag">Malayalam</span>
-            <span class="skill-tag">Hindi</span>
-            <span class="skill-tag">Tamil</span>
-            <span class="skill-tag">Arabic</span>
-            <span class="skill-tag">Japanese</span>
-            <span class="skill-tag">Sanskrit</span>
-          </div>
+      <h2 class="section-title">Languages</h2>
+      <div class="timeline-card">
+        <div class="skills-tags">
+          <span class="skill-tag">English</span>
+          <span class="skill-tag">Malayalam</span>
+          <span class="skill-tag">Hindi</span>
+          <span class="skill-tag">Tamil</span>
+          <span class="skill-tag">Arabic</span>
+          <span class="skill-tag">Japanese</span>
+          <span class="skill-tag">Sanskrit</span>
         </div>
       </div>
     </div>
@@ -444,15 +388,15 @@
   <!-- Contact -->
   <section id="contact" class="section">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-envelope"></i> Get In Touch</h2>
+      <h2 class="section-title">Get In Touch</h2>
       <div class="contact-single">
         <div class="contact-info">
           <h3>Contact Me</h3>
           <div class="social-links">
-            <a href="https://www.linkedin.com/in/akash-k-developer" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/akash__kuppattil/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/akashkuppattil-dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="mailto:akashskuppattil@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/akash-k-developer" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://www.instagram.com/akash__kuppattil/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+            <a href="https://github.com/akashkuppattil-dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+            <a href="mailto:akashskuppattil@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">Email</a>
           </div>
         </div>
       </div>
@@ -465,7 +409,7 @@
       <div class="footer-bottom">
         <p>© 2025 Akash K. All rights reserved.</p>
         <div class="footer-contact">
-          <a href="mailto:akashskuppattil@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> akashskuppattil@gmail.com</a>
+          <a href="mailto:akashskuppattil@gmail.com" class="contact-link">akashskuppattil@gmail.com</a>
         </div>
         <div class="footer-legal">
           <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-conditions">Terms & Conditions</a> | <a href="/sitemap">Sitemap</a>
