@@ -1,471 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="theme-color" content="#2E8B57">
-    <title>AKASH K | FULL STACK DEVELOPER</title>
-    
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <!-- Preload critical CSS -->
-    <link rel="preload" href="css/styles.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"></noscript>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tX/miZyoHS5obTRR9BMY=" crossorigin=""/>
-
-    <!-- Inline CSS for Certifications, Footer, and Contact -->
-    <style>
-        .certifications-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
-        }
-        .certifications-container .skills-category {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            transition: transform 0.3s ease;
-        }
-        .certifications-container .skills-category:hover {
-            transform: translateY(-5px);
-        }
-        .experience-header h3 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: #2E8B57;
-        }
-        .experience-role, .experience-date {
-            margin: 5px 0;
-            color: #555;
-        }
-        .experience-body p {
-            margin: 10px 0;
-            color: #333;
-        }
-        .footer-contact {
-            margin: 10px 0;
-        }
-        .footer-contact .contact-link {
-            color: #2E8B57;
-            text-decoration: none;
-            font-size: 1rem;
-            display: block;
-            margin: 5px 0;
-        }
-        .footer-contact .contact-link i {
-            margin-right: 8px;
-            font-size: 1.2rem;
-        }
-        .footer-contact .contact-link:hover {
-            text-decoration: underline;
-        }
-        .social-links .contact-link {
-            color: #2E8B57;
-            text-decoration: none;
-            font-size: 1rem;
-            display: block;
-            margin: 8px 0;
-            visibility: visible !important; /* Ensure visibility */
-        }
-        .social-links .contact-link i {
-            margin-right: 8px;
-            font-size: 1.2rem;
-            visibility: visible !important; /* Ensure icon visibility */
-        }
-        .social-links .contact-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AKASH K | Software Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a56db;
+      --dark: #111827;
+      --light: #f9fafb;
+      --gray: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    header {
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
+    .nav-links a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    section { padding: 4rem 0; }
+    h1, h2, h3 { color: var(--dark); }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; display: inline-block; }
+    .hero {
+      text-align: center;
+      padding: 6rem 0;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+    .hero p { max-width: 700px; margin: 1rem auto; font-size: 1.1rem; color: var(--gray); }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #1e40af; }
+    .grid { display: grid; gap: 2rem; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border: 1px solid var(--border);
+    }
+    .card h3 { margin-bottom: 0.75rem; color: var(--primary); }
+    ul { list-style: none; }
+    ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    ul li:before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      margin: 0.25rem 0.25rem 0.25rem 0;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    .contact-info a { color: var(--primary); text-decoration: none; }
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background: var(--dark);
+      color: white;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      h1 { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="#home" class="logo" style="margin-left: 10%;"><strong>AKASH KUPPATTIL</strong></a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> About</a></li>
-                <li><a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> Experience</a></li>
-                <li><a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                <li><a href="#education" class="nav-link"><i class="fas fa-graduation-cap"></i> Education</a></li>
-                <li><a href="#skills" class="nav-link"><i class="fas fa-tools"></i> Skills</a></li>
-                <li><a href="#certifications" class="nav-link"><i class="fas fa-certificate"></i> Certifications</a></li>
-                <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Home/Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content text-center">
-                <h1><strong>AKASH K</strong></h1>
-                <h2><strong>FULL STACK DEVELOPER</strong></h2>
-                <p>Building Cutting-Edge Digital Solutions</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">Explore Projects</a>
-                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
-                </div>
-            </div>
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">AKASH K</div>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#contact">Contact</a>
         </div>
-    </section>
+      </nav>
+    </div>
+  </header>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
-            <div class="about-grid" style="grid-template-columns: 40% 60%; gap: 10px;">
-                <div class="about-image">
-                    <div class="image-container">
-                        <img src="./images/5.jpg" alt="AKASH K" style="width:90%; height:auto;">
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p>Motivated MCA graduate with a solid foundation in web and software development. Skilled in creating responsive and scalable applications using React, Django, and Python. Experienced in frontend, backend, and API development, with knowledge of databases, REST APIs, and cloud deployment (AWS/Firebase). Eager to learn new technologies and contribute to projects in frontend, backend, or full stack development roles.</p>
-                    <p><i class="fas fa-graduation-cap"></i> <strong>Master of Computer Applications (MCA)</strong></p>
-                    <p>APJ Abdul Kalam Technological University – AWH Engineering College</p>
-                    <div class="about-cta">
-                        <a href="pdf/Akash_K_FullStackDeveloper_Resume.pdf" class="btn btn-primary" download><i class="fas fa-download"></i> Download CV</a>
-                    </div>
-                </div>
-            </div>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>AKASH K</h1>
+      <p><strong>Software Developer</strong></p>
+      <p>Turning ideas into real-world digital experiences</p>
+      <a href="#projects" class="btn">Explore Projects</a>
+      <a href="#contact" class="btn" style="background: transparent; border: 2px solid var(--primary); margin-left: 1rem;">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        Hello! I’m Akash K, a passionate Software Developer and MCA graduate who loves bringing ideas to life through meaningful digital experiences. 
+        Driven by creativity and curiosity, I focus on building software that solves real-world problems and makes a lasting impact.
+      </p>
+      <div class="contact-info">
+        <span>📍 Calicut, Kerala, India</span> |
+        <a href="https://akashkuppattil-dev.github.io/akash-portfolio/" target="_blank">🌐 Portfolio</a> |
+        <a href="tel:+919947878418">📞 +91 9947878418</a> |
+        <a href="https://linkedin.com/in/akash-k-developer" target="_blank">🔗 LinkedIn</a> |
+        <a href="mailto:akashskuppattil@gmail.com">✉️ Email</a> |
+        <a href="https://github.com/akashkuppattil-dev" target="_blank">💻 GitHub</a>
+      </div>
+      <a href="Akash_Software_Developer_CV.pdf" class="btn" style="margin-top: 1.5rem;" download>Download CV</a>
+    </div>
+  </section>
+
+  <!-- Professional Experience -->
+  <section id="experience" style="background: white;">
+    <div class="container">
+      <h2>Professional Experience</h2>
+      <div class="grid">
+
+        <!-- Trogon Media -->
+        <div class="card">
+          <h3>PHP Developer Intern</h3>
+          <p><strong>Trogon Media Pvt Ltd</strong> | Calicut, India<br><em>Jul 2025 – Oct 2025</em></p>
+          <ul>
+            <li>Developed and maintained web applications using <strong>CodeIgniter</strong> & <strong>Laravel</strong> frameworks.</li>
+            <li>Contributed to <strong>multiple live client projects</strong>, including web and mobile applications, ensuring high performance and scalability.</li>
+            <li>Designed and implemented <strong>responsive front-end interfaces</strong> using HTML, CSS, JavaScript, and Bootstrap, improving user engagement.</li>
+            <li>Managed <strong>project deployments and maintenance</strong> via cPanel, handling hosting setup, version updates, and database configuration.</li>
+            <li>Collaborated closely with designers, backend developers, and QA teams in an <strong>Agile development environment</strong>, gaining full-stack experience from design to deployment.</li>
+          </ul>
+          <div>
+            <span class="tag">PHP</span>
+            <span class="tag">CodeIgniter</span>
+            <span class="tag">Laravel</span>
+            <span class="tag">Git</span>
+            <span class="tag">cPanel</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
-            <div class="skills-container">
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>PHP Developer Intern</h3>
-                        <p class="experience-date">Jul 2025 – Oct 2025</p>
-                        <p class="experience-role">Trogon Media Pvt Ltd | Calicut, India</p>
-                    </div>
-                    <div class="experience-body">
-                        <ul class="experience-details">
-                            <li>Developed and maintained PHP-based web applications using CodeIgniter (3 & 4) and Laravel.</li>
-                            <li>Deployed and managed live projects through cPanel, ensuring smooth hosting and configuration.</li>
-                            <li>Used Git for version control and collaborated with team members for feature testing and debugging.</li>
-                        </ul>
-                        <div class="experience-skills">
-                            <span>PHP</span>
-                            <span>CodeIgniter</span>
-                            <span>Laravel</span>
-                            <span>Git</span>
-                            <span>cPanel</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>Software Developer Intern</h3>
-                        <p class="experience-date">Jan 2025 – May 2025</p>
-                        <p class="experience-role">Bairuha-Tech | Kozhikode, India</p>
-                    </div>
-                    <div class="experience-body">
-                        <ul class="experience-details">
-                            <li>Collaborated in the development of a Hospital Management System using React.js, NestJS, and PostgreSQL.</li>
-                            <li>Designed and integrated REST APIs for appointment scheduling and OP number generation.</li>
-                            <li>Implemented role-based access control, improving system security and usability.</li>
-                            <li>Deployed modules on AWS/Firebase, gaining hands-on experience with cloud deployment.</li>
-                        </ul>
-                        <div class="experience-skills">
-                            <span>React.js</span>
-                            <span>NestJS</span>
-                            <span>PostgreSQL</span>
-                            <span>REST APIs</span>
-                            <span>AWS</span>
-                            <span>Firebase</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Bairuha-Tech -->
+        <div class="card">
+          <h3>Software Developer Intern</h3>
+          <p><strong>Bairuha-Tech</strong> | Kozhikode, India<br><em>Jan 2025 – May 2025</em></p>
+          <ul>
+            <li>Collaborated in the development of a <strong>Hospital Management System</strong> using <strong>React.js</strong>, <strong>NestJS</strong>, and <strong>PostgreSQL</strong>.</li>
+            <li>Designed and implemented <strong>RESTful APIs</strong> for appointment scheduling, patient registration, and data management.</li>
+            <li>Integrated <strong>role-based access control (RBAC)</strong>, enhancing data security and improving system usability.</li>
+            <li>Worked within an <strong>Agile/Scrum team environment</strong>, participating in sprint reviews and collaborative code development.</li>
+            <li>Enhanced system reliability by performing <strong>API optimization</strong>, <strong>data validation</strong>, and <strong>performance testing</strong>.</li>
+          </ul>
+          <div>
+            <span class="tag">React.js</span>
+            <span class="tag">NestJS</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Firebase</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Key Projects</h2>
-            <div class="skills-container">
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>Hospital Management System (Live Project – Bairuha Tech)</h3>
-                        <p class="experience-date">Jan 2025 – May 2025</p>
-                    </div>
-                    <div class="experience-body">
-                        <p>Developed Front Office Management Module using React.js and NestJS.</p>
-                        <ul class="experience-details">
-                            <li>Integrated with PostgreSQL for dynamic appointment scheduling.</li>
-                            <li>Ensured secure access through role-based authentication.</li>
-                            <li>Deployed on AWS/Firebase, supporting real-time hospital workflows.</li>
-                        </ul>
-                        <div class="experience-skills">
-                            <span>React.js</span>
-                            <span>NestJS</span>
-                            <span>PostgreSQL</span>
-                            <span>AWS</span>
-                            <span>Firebase</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>Warehouse Management & Logistics Tracking</h3>
-                        <p class="experience-date">Jul 2024 – Nov 2024</p>
-                    </div>
-                    <div class="experience-body">
-                        <p>Built a real-time logistics tracking solution with Python, Django, and MySQL.</p>
-                        <ul class="experience-details">
-                            <li>Enabled vehicle tracking and warehouse optimization, improving operational efficiency.</li>
-                            <li>Implemented report generation features for better decision-making.</li>
-                        </ul>
-                        <div class="experience-skills">
-                            <span>Python</span>
-                            <span>Django</span>
-                            <span>MySQL</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>Free Bird (Web App for NGOs & Children)</h3>
-                        <p class="experience-date">Dec 2021 – Mar 2022</p>
-                    </div>
-                    <div class="experience-body">
-                        <p>Designed a web application to connect street children with NGOs for education and healthcare.</p>
-                        <ul class="experience-details">
-                            <li>Built with Python, Django, and MySQL, supporting data-driven social impact.</li>
-                        </ul>
-                        <div class="experience-skills">
-                            <span>Python</span>
-                            <span>Django</span>
-                            <span>MySQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2>Key Projects</h2>
+      <div class="grid">
+
+        <!-- Hospital Management System -->
+        <div class="card">
+          <h3>Hospital Management System <em>(Live Project – Bairuha Tech)</em></h3>
+          <p><em>Jan 2025 – May 2025</em></p>
+          <ul>
+            <li>Developed the <strong>Front Office Management Module</strong> using <strong>React.js</strong> and <strong>NestJS</strong>.</li>
+            <li>Integrated with PostgreSQL for dynamic appointment scheduling and patient data workflows.</li>
+            <li>Implemented <strong>role-based authentication (RBAC)</strong> for secure access control and data protection.</li>
+            <li>Contributed to <strong>API optimization</strong> and <strong>UI enhancements</strong> for smoother user experience and faster response times.</li>
+            <li>Deployed on <strong>AWS/Firebase</strong>, supporting real-time hospital workflows.</li>
+          </ul>
+          <div>
+            <span class="tag">React.js</span>
+            <span class="tag">NestJS</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Firebase</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Education Section -->
-    <section id="education" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
-            <div class="education-timeline">
-                <div class="education-card">
-                    <div class="education-header">
-                        <p class="degree"><i class="fas fa-graduation-cap"></i> Master of Computer Applications (MCA)</p>
-                        <h3>APJ Abdul Kalam Technological University – AWH Engineering College</h3>
-                        <p class="date-location"><i class="far fa-calendar-alt"></i> Jul 2023 – Jun 2025</p>
-                        <p class="date-location"><i class="fas fa-map-marker-alt"></i> Calicut, India</p>
-                    </div>
-                    <div class="education-body">
-                        <p><strong>Focus:</strong> Advanced Software Development, Cloud Computing, and Web Technologies</p>
-                    </div>
-                </div>
-                <div class="education-card">
-                    <div class="education-header">
-                        <p class="degree"><i class="fas fa-graduation-cap"></i> Bachelor of Computer Science</p>
-                        <h3>SAFI Institute of Advanced Study (Autonomous)</h3>
-                        <p class="date-location"><i class="far fa-calendar-alt"></i> Jul 2019 – May 2022</p>
-                        <p class="date-location"><i class="fas fa-map-marker-alt"></i> Malappuram, India</p>
-                    </div>
-                    <div class="education-body">
-                        <p><strong>Focus:</strong> Full-Stack Development and Software Engineering</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Warehouse Management -->
+        <div class="card">
+          <h3>Warehouse Management & Logistics Tracking</h3>
+          <p><em>Jul 2024 – Nov 2024</em></p>
+          <ul>
+            <li>Built a <strong>real-time logistics tracking platform</strong> using <strong>Python</strong>, <strong>Django</strong>, and <strong>MySQL</strong> to manage trips, drivers, and warehouse operations.</li>
+            <li>Enabled <strong>vehicle tracking</strong>, trip updates, and <strong>warehouse optimization</strong>, improving operational efficiency and transparency.</li>
+            <li>Integrated <strong>report generation and analytics features</strong> for data-driven decision-making.</li>
+            <li>Focused on <strong>scalability</strong>, <strong>efficient database management</strong>, and <strong>accurate data synchronization</strong>.</li>
+          </ul>
+          <div>
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">MySQL</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-tools"></i> Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skills-category">
-                    <h3><i class="fas fa-laptop-code"></i> Programming & Development</h3>
-                    <div class="skills-tags">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">JavaScript (ES6+)</span>
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">NestJS</span>
-                        <span class="skill-tag">PHP</span>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <h3><i class="fas fa-database"></i> Databases</h3>
-                    <div class="skills-tags">
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">MongoDB (NoSQL)</span>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <h3><i class="fas fa-tools"></i> Tools & Others</h3>
-                    <div class="skills-tags">
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">Postman</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">CI/CD</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Firebase</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">cPanel</span>
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">Excel</span>
-                        <span class="skill-tag">Testing</span>
-                        <span class="skill-tag">Agile/Scrum</span>
-                    </div>
-                </div>
-            </div>
+        <!-- Free Bird -->
+        <div class="card">
+          <h3>Free Bird (Web App for NGOs & Children)</h3>
+          <p><em>Dec 2021 – Mar 2022</em></p>
+          <ul>
+            <li>Designed and developed a <strong>social impact platform</strong> to connect street children with NGOs for education and healthcare support.</li>
+            <li>Built with <strong>Python</strong>, <strong>Django</strong>, and <strong>MySQL</strong>, ensuring secure data handling and efficient information sharing.</li>
+            <li>Implemented <strong>user-friendly interfaces</strong> for NGOs to manage cases and update progress.</li>
+          </ul>
+          <div>
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">MySQL</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
-            <div class="certifications-container">
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>PHP Internship</h3>
-                        <p class="experience-role">Trogon Media Pvt Ltd</p>
-                        <p class="experience-date">Jul 2025 – Oct 2025</p>
-                    </div>
-                    <div class="experience-body">
-                        <p>Focus: Real-time PHP Application Development</p>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>Internship Completion - React and MERN Stack</h3>
-                        <p class="experience-role">Bairuha-Tech LLP</p>
-                        <p class="experience-date">Jan 2025 – May 2025</p>
-                    </div>
-                    <div class="experience-body">
-                        <p>Focus: Hospital Management System, ERP Applications</p>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>Python and Django Full Stack Web Development Bootcamp</h3>
-                        <p class="experience-role">Udemy (Jose Portilla)</p>
-                        <p class="experience-date">2025</p>
-                    </div>
-                    <div class="experience-body">
-                        <p>Comprehensive training in full-stack development.</p>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>100 Days of Code: The Complete Python Pro Bootcamp</h3>
-                        <p class="experience-role">Udemy (Dr. Angela Yu)</p>
-                        <p class="experience-date">2025</p>
-                    </div>
-                    <div class="experience-body">
-                        <p>In-depth Python programming skills.</p>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>Full Stack Web Development</h3>
-                        <p class="experience-role">FreeCodeCamp / Coursera</p>
-                        <p class="experience-date">2025</p>
-                    </div>
-                    <div class="experience-body">
-                        <p>End-to-end web development training.</p>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>AWS Cloud Practitioner Essentials</h3>
-                        <p class="experience-role">AWS</p>
-                        <p class="experience-date">2025</p>
-                    </div>
-                    <div class="experience-body">
-                        <p>Fundamentals of AWS cloud services.</p>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <div class="experience-header">
-                        <h3>JavaScript Algorithms & Data Structures</h3>
-                        <p class="experience-role">FreeCodeCamp</p>
-                        <p class="experience-date">2025</p>
-                    </div>
-                    <div class="experience-body">
-                        <p>Advanced JavaScript and data structure techniques.</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" style="background: white;">
+    <div class="container">
+      <h2>Education</h2>
+      <div class="grid grid-2">
+
+        <div class="card">
+          <h3>Master of Computer Applications (MCA)</h3>
+          <p><strong>APJ Abdul Kalam Technological University – AWH Engineering College</strong><br>
+          <em>Jul 2023 – Jul 2025</em> | CGPA: <strong>7.64</strong></p>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-     <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-envelope"></i> Get In Touch</h2>
-            <div class="contact-single">
-                <div class="contact-info">
-                    <h3>Contact Me</h3>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/akash-k-developer" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.instagram.com/akash__kuppattil/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://github.com/akashkuppattil-dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="mailto:akashskuppattil@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
+        <div class="card">
+          <h3>Bachelor of Computer Science</h3>
+          <p><strong>SAFI Institute of Advanced Study (Autonomous)</strong><br>
+          <em>Jul 2019 – May 2022</em> | CGPA: <strong>6.4</strong></p>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2025 Akash K. All rights reserved.</p>
-                <div class="footer-contact">
-                    <a href="mailto:akashskuppattil@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> akashskuppattil@gmail.com</a>
-                </div>
-                <div class="footer-legal">
-                    <a href="/privacy-policy">Privacy Policy</a> |
-                    <a href="/terms-conditions">Terms & Conditions</a> |
-                    <a href="/sitemap">Sitemap</a>
-                </div>
-            </div>
+        <div class="card">
+          <h3>Higher Secondary Education (Biology Science)</h3>
+          <p><strong>Government Higher Secondary School, Calicut – Kerala State Board</strong><br>
+          <em>Jul 2017 – May 2019</em></p>
         </div>
-    </footer>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="js/main.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/contact.js"></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills -->
+  <section id="skills">
+    <div class="container">
+      <h2>Technical Skills</h2>
+      <div class="grid grid-2">
+
+        <div class="card">
+          <h3>Programming & Development</h3>
+          <div>
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript (ES6+)</span>
+            <span class="tag">React.js</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">NestJS</span>
+            <span class="tag">PHP</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Databases</h3>
+          <div>
+            <span class="tag">MySQL</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">MongoDB (NoSQL)</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Tools & Others</h3>
+          <div>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Postman</span>
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">Docker</span>
+            <span class="tag">cPanel</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Testing</span>
+            <span class="tag">Agile/Scrum</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications" style="background: white;">
+    <div class="container">
+      <h2>Certifications</h2>
+      <ul style="columns: 2; column-gap: 2rem;">
+        <li>PHP Internship – Trogon Media Pvt Ltd (2025)</li>
+        <li>React and MERN Stack Internship – Bairuha-Tech LLP (2025)</li>
+        <li>Python & Django Full Stack Web Development Bootcamp – Udemy (2024)</li>
+        <li>100 Days of Code: Python Pro Bootcamp – Udemy (2024)</li>
+        <li>Full Stack Web Development Certification – FreeCodeCamp (2024)</li>
+        <li>AWS Cloud Practitioner Essentials – Amazon Web Services (2024)</li>
+        <li>JavaScript Algorithms & Data Structures – FreeCodeCamp (2024)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container" style="text-align: center;">
+      <h2>Get In Touch</h2>
+      <p>I'm open to freelance, internship, or full-time opportunities. Let's build something amazing together!</p>
+      <a href="mailto:akashskuppattil@gmail.com" class="btn">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Akash K. All rights reserved.</p>
+      <p>
+        <a href="mailto:akashskuppattil@gmail.com" style="color: #93c5fd;">akashskuppattil@gmail.com</a> | 
+        <a href="#" style="color: #93c5fd;">Privacy Policy</a> | 
+        <a href="#" style="color: #93c5fd;">Terms & Conditions</a> | 
+        <a href="#" style="color: #93c5fd;">Sitemap</a>
+      </p>
+    </div>
+  </footer>
+
 </body>
 </html>
